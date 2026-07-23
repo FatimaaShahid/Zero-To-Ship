@@ -1,25 +1,103 @@
-
+version: "3.9"
 
 services:
 
-  postgres:
-
+  user-postgres:
     image: postgres:16
-
-    container_name: sentinel-postgres
-
+    container_name: user-postgres
     restart: always
-
     environment:
+      POSTGRES_DB: user_db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: sentinel_sync
-
     ports:
-      - "5432:5432"
-
+      - "5433:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - user_data:/var/lib/postgresql/data
+
+  cafeteria-postgres:
+    image: postgres:16
+    container_name: cafeteria-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: cafeteria_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5434:5432"
+    volumes:
+      - cafeteria_data:/var/lib/postgresql/data
+
+  library-postgres:
+    image: postgres:16
+    container_name: library-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: library_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5435:5432"
+    volumes:
+      - library_data:/var/lib/postgresql/data
+
+  bus-postgres:
+    image: postgres:16
+    container_name: bus-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: bus_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5436:5432"
+    volumes:
+      - bus_data:/var/lib/postgresql/data
+
+  chatbot-postgres:
+    image: postgres:16
+    container_name: chatbot-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: chatbot_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5437:5432"
+    volumes:
+      - chatbot_data:/var/lib/postgresql/data
+
+  notification-postgres:
+    image: postgres:16
+    container_name: notification-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: notification_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5438:5432"
+    volumes:
+      - notification_data:/var/lib/postgresql/data
+
+  event-postgres:
+    image: postgres:16
+    container_name: event-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: event_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5439:5432"
+    volumes:
+      - event_data:/var/lib/postgresql/data
 
 volumes:
-  postgres_data:
+  user_data:
+  cafeteria_data:
+  library_data:
+  bus_data:
+  chatbot_data:
+  notification_data:
+  event_data:
