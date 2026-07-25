@@ -264,10 +264,10 @@ docker exec -it event-postgres psql -U postgres -d event_db
 
 # 🧪 Test Seed
 
-Phase 1 includes a complete manual testing script.
+run the separateseed files in the databasterminals with command :
+```bash
 
-```
-database/test_data.sql
+\i /service_name_seed.sql
 ```
 
 It validates:
