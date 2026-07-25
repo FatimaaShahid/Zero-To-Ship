@@ -191,13 +191,74 @@ psql -h localhost -p 5438 -U postgres -d notification_db
 
 # 🧪 Database Initialization
 
-Run the schema
+## 👤 User Service
 
 ```bash
-psql -h localhost -p 5433 -U postgres -d user_db -f database/user_schema.sql
+docker cp user_schema.sql user-postgres:/user_schema.sql
+docker exec -it user-postgres psql -U postgres -d user_db
+\i /user_schema.sql
 ```
 
-Repeat for each database.
+---
+
+## 🍽️ Cafeteria Service
+
+```bash
+docker cp cafeteria_schema.sql cafeteria-postgres:/cafeteria_schema.sql
+docker exec -it cafeteria-postgres psql -U postgres -d cafeteria_db
+\i /cafeteria_schema.sql
+```
+
+---
+
+## 📚 Library Service
+
+```bash
+docker cp library_schema.sql library-postgres:/library_schema.sql
+docker exec -it library-postgres psql -U postgres -d library_db
+\i /library_schema.sql
+```
+
+---
+
+## 🚌 University Bus Service
+
+```bash
+docker cp bus_schema.sql bus-postgres:/bus_schema.sql
+docker exec -it bus-postgres psql -U postgres -d bus_db
+\i /bus_schema.sql
+```
+
+---
+
+## 🤖 AI Chatbot Service
+
+```bash
+docker cp chatbot_schema.sql chatbot-postgres:/chatbot_schema.sql
+docker exec -it chatbot-postgres psql -U postgres -d chatbot_db
+\i /chatbot_schema.sql
+```
+
+---
+
+## 🔔 Notification Service
+
+```bash
+docker cp notification_schema.sql notification-postgres:/notification_schema.sql
+docker exec -it notification-postgres psql -U postgres -d notification_db
+\i /notification_schema.sql
+```
+
+---
+
+## 📊 Event Logging Service
+
+```bash
+docker cp event_schema.sql event-postgres:/event_schema.sql
+docker exec -it event-postgres psql -U postgres -d event_db
+\i /event_schema.sql
+```
+
 
 ---
 
