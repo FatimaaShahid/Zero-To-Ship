@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  cafeteria-service:
+    build: .
+    container_name: cafeteria-service
+
+    ports:
+      - "8000:8000"
+
+    env_file:
+      - .env
+
+    restart: unless-stopped
+
+    networks:
+      - database_default
+
+networks:
+  database_default:
+    external: true
