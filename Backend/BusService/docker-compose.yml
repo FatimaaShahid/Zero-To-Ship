@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  bus-service:
+    build: .
+    container_name: bus-service
+
+    ports:
+      - "8001:8000"
+
+    env_file:
+      - .env
+
+    restart: unless-stopped
+
+    networks:
+      - database_default
+
+networks:
+  database_default:
+    external: true
